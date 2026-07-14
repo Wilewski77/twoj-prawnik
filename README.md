@@ -9,16 +9,30 @@ Statyczny HTML + CSS + vanilla JS — bez builda i zależności. Wystarczy dowol
 ## Struktura
 
 ```
-index.html        — cała treść strony (polski w źródle + atrybuty data-i18n)
-css/styles.css    — design system (zieleń + złoto, EB Garamond / Inter)
-js/i18n.js        — słowniki tłumaczeń: PL / UK / EN / DE
-js/main.js        — przełącznik języka, animacje, menu, formularz
-assets/           — logo, favicon
+index.html         — strona główna (PL, źródło prawdy dla treści)
+ua/ en/ de/        — statyczne podstrony językowe (GENEROWANE — nie edytuj ręcznie)
+translations.json  — słowniki tłumaczeń: PL / UK / EN / DE
+build.py           — generator podstron językowych
+css/styles.css     — design system (zieleń + złoto, EB Garamond / IBM Plex Sans)
+js/main.js         — przełącznik języka, animacje, menu, formularz
+assets/            — logo, favicon, odznaka, og-image
 ```
 
 ## Języki
 
-Strona wykrywa język przeglądarki (PL/UK/EN/DE; `ru → uk`) i zapamiętuje ręczny wybór w `localStorage`. Edycja tekstów: `js/i18n.js`.
+Każda wersja językowa to osobna statyczna podstrona (`/`, `/ua/`, `/en/`, `/de/`) — w pełni indeksowalna przez wyszukiwarki. Strona główna wykrywa język przeglądarki (`ru → uk`) i przekierowuje przy pierwszej wizycie; ręczny wybór zapamiętywany jest w `localStorage`.
+
+**Edycja treści:** zmień tekst w `index.html` (polski) i/lub w `translations.json`, potem uruchom:
+
+```
+python build.py
+```
+
+i zacommituj wygenerowane podstrony. Przed produkcją uzupełnij `SITE_URL` w `build.py` (włącza hreflang + canonical) i przebuduj.
+
+## Formularz
+
+Domyślnie formularz otwiera program pocztowy (mailto). Aby wysyłać przez backend, wpisz adres endpointu (np. Formspree) w stałą `FORM_ENDPOINT` na górze `js/main.js`.
 
 ## Podgląd lokalny
 

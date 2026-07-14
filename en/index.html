@@ -1,38 +1,20 @@
 <!DOCTYPE html>
-<html lang="pl">
+<html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>TWÓJ PRAWNIK — Międzynarodowe Biuro Pomocy Prawnej do spraw Cudzoziemców w Polsce</title>
-  <meta name="description" content="Pomoc prawna dla cudzoziemców w Polsce: legalizacja pobytu, karta pobytu, zezwolenia na pracę, obywatelstwo, odwołania. Obsługa po polsku, ukraińsku, angielsku i niemiecku. Łódź i cała Polska.">
-  <meta property="og:title" content="TWÓJ PRAWNIK — Pomoc prawna dla cudzoziemców w Polsce">
-  <meta property="og:description" content="Legalizacja pobytu i pracy, obywatelstwo, odwołania. Doradzamy w 4 językach. Łódź · online w całej Polsce.">
+  <title>TWÓJ PRAWNIK — International Legal Aid Office for Foreigners in Poland</title>
+  <meta name="description" content="Legal help for foreigners in Poland: residence legalization, residence card, work permits, citizenship, appeals. Services in English, Polish, Ukrainian and German. Łódź and all of Poland.">
+  <meta property="og:title" content="TWÓJ PRAWNIK — International Legal Aid Office for Foreigners in Poland">
+  <meta property="og:description" content="Legal help for foreigners in Poland: residence legalization, residence card, work permits, citizenship, appeals. Services in English, Polish, Ukrainian and German. Łódź and all of Poland.">
   <meta property="og:type" content="website">
+  <meta property="og:locale" content="en_GB">
   <meta property="og:image" content="/assets/og-image.png">
   <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:wght@500;600;700&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="/css/styles.css">
-  <script data-lang-redirect>
-  /* Auto-wybór wersji językowej — tylko na stronie głównej (PL).
-     Generator build.py usuwa ten skrypt z podstron. */
-  (function () {
-    try {
-      var map = { pl: "", uk: "ua/", en: "en/", de: "de/" };
-      var lang = localStorage.getItem("tp-lang");
-      if (!lang) {
-        var cands = navigator.languages || [navigator.language || "pl"];
-        for (var i = 0; i < cands.length; i++) {
-          var c = String(cands[i]).toLowerCase().slice(0, 2);
-          if (c === "ua" || c === "ru") c = "uk";
-          if (map[c] !== undefined) { lang = c; break; }
-        }
-      }
-      if (lang && lang !== "pl" && map[lang]) location.replace("/" + map[lang]);
-    } catch (e) { /* tryb prywatny */ }
-  })();
-  </script>
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -61,16 +43,16 @@
 <img class="brand-mark" src="/assets/logo-header.png" alt="TWÓJ PRAWNIK — logo" width="160" height="160">
         <span class="brand-text">
           <strong>TWÓJ PRAWNIK</strong>
-          <small data-i18n="brand.tagline">Międzynarodowe Biuro Pomocy Prawnej</small>
+          <small data-i18n="brand.tagline">International Legal Aid Office</small>
         </span>
       </a>
 
       <nav class="main-nav" id="mainNav" aria-label="Nawigacja główna">
-        <a href="#uslugi" data-i18n="nav.services">Usługi</a>
-        <a href="#o-nas" data-i18n="nav.about">O nas</a>
-        <a href="#proces" data-i18n="nav.process">Jak działamy</a>
+        <a href="#uslugi" data-i18n="nav.services">Services</a>
+        <a href="#o-nas" data-i18n="nav.about">About us</a>
+        <a href="#proces" data-i18n="nav.process">How we work</a>
         <a href="#faq" data-i18n="nav.faq">FAQ</a>
-        <a href="#kontakt" data-i18n="nav.contact">Kontakt</a>
+        <a href="#kontakt" data-i18n="nav.contact">Contact</a>
         <a href="tel:+48538369314" class="btn btn-accent nav-cta">
           <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 4h4l2 5-2.5 1.5a12 12 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2z" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
           <span>538 369 314</span>
@@ -81,13 +63,13 @@
         <div class="lang-switch" id="langSwitch">
           <button class="lang-btn" id="langBtn" aria-haspopup="listbox" aria-expanded="false" aria-label="Zmień język strony">
             <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="1.8"/><path d="M3.5 12h17M12 3.5c2.5 2.3 3.8 5.3 3.8 8.5s-1.3 6.2-3.8 8.5c-2.5-2.3-3.8-5.3-3.8-8.5S9.5 5.8 12 3.5z" stroke="currentColor" stroke-width="1.8"/></svg>
-            <span id="langCurrent">PL</span>
+            <span id="langCurrent">EN</span>
             <svg class="chev" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="m6 9 6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
           </button>
           <ul class="lang-menu" id="langMenu" role="listbox" aria-label="Wybór języka">
-            <li><a role="option" data-lang="pl" href="/" aria-selected="true"><span class="lang-code">PL</span> Polski</a></li>
+            <li><a role="option" data-lang="pl" href="/" aria-selected="false"><span class="lang-code">PL</span> Polski</a></li>
             <li><a role="option" data-lang="uk" href="/ua/" aria-selected="false"><span class="lang-code">UA</span> Українська</a></li>
-            <li><a role="option" data-lang="en" href="/en/" aria-selected="false"><span class="lang-code">EN</span> English</a></li>
+            <li><a role="option" data-lang="en" href="/en/" aria-selected="true"><span class="lang-code">EN</span> English</a></li>
             <li><a role="option" data-lang="de" href="/de/" aria-selected="false"><span class="lang-code">DE</span> Deutsch</a></li>
           </ul>
         </div>
@@ -112,25 +94,25 @@
       </div>
       <div class="container hero-inner">
         <div class="hero-copy">
-          <p class="eyebrow rise" style="--d:0" data-i18n="hero.eyebrow">Międzynarodowe Biuro Pomocy Prawnej do spraw Cudzoziemców w Polsce</p>
-          <h1 class="rise" style="--d:1" data-i18n-html="hero.title">Twój prawnik w Polsce.<br><em>Legalnie, skutecznie, w&nbsp;Twoim języku.</em></h1>
-          <p class="lead rise" style="--d:2" data-i18n="hero.lead">Pomagamy cudzoziemcom w legalizacji pobytu i pracy, sprawach urzędowych i sądowych. Prowadzimy sprawy od pierwszej konsultacji do decyzji.</p>
+          <p class="eyebrow rise" style="--d:0" data-i18n="hero.eyebrow">International Legal Aid Office for Foreigners in Poland</p>
+          <h1 class="rise" style="--d:1" data-i18n-html="hero.title">Your lawyer in Poland.<br><em>Legal, effective, in your language.</em></h1>
+          <p class="lead rise" style="--d:2" data-i18n="hero.lead">We help foreigners legalize their stay and work, and handle administrative and court matters. We manage your case from the first consultation to the final decision.</p>
           <div class="hero-actions rise" style="--d:3">
-            <a href="#kontakt" class="btn btn-accent btn-lg" data-i18n="hero.cta1">Umów konsultację</a>
-            <a href="#uslugi" class="btn btn-ghost btn-lg" data-i18n="hero.cta2">Zobacz usługi</a>
+            <a href="#kontakt" class="btn btn-accent btn-lg" data-i18n="hero.cta1">Book a consultation</a>
+            <a href="#uslugi" class="btn btn-ghost btn-lg" data-i18n="hero.cta2">See services</a>
           </div>
           <ul class="hero-trust rise" style="--d:4">
             <li>
               <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="1.8"/><path d="M3.5 12h17M12 3.5c2.5 2.3 3.8 5.3 3.8 8.5s-1.3 6.2-3.8 8.5c-2.5-2.3-3.8-5.3-3.8-8.5S9.5 5.8 12 3.5z" stroke="currentColor" stroke-width="1.8"/></svg>
-              <span data-i18n="hero.trust1">Obsługa w 4 językach</span>
+              <span data-i18n="hero.trust1">Service in 4 languages</span>
             </li>
             <li>
               <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 3l7 3v5c0 4.5-3 8.5-7 10-4-1.5-7-5.5-7-10V6l7-3z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><path d="m9 12 2 2 4-4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
-              <span data-i18n="hero.trust2">Prawnicy z Polski i Ukrainy</span>
+              <span data-i18n="hero.trust2">Lawyers from Poland and Ukraine</span>
             </li>
             <li>
               <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 21s-7-4.6-7-10a7 7 0 0 1 14 0c0 5.4-7 10-7 10z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><circle cx="12" cy="11" r="2.5" stroke="currentColor" stroke-width="1.8"/></svg>
-              <span data-i18n="hero.trust3">Łódź · online w całej Polsce</span>
+              <span data-i18n="hero.trust3">Łódź · online across Poland</span>
             </li>
           </ul>
         </div>
@@ -171,50 +153,50 @@
     <section class="section" id="uslugi">
       <div class="container">
         <div class="section-head reveal">
-          <p class="eyebrow" data-i18n="services.eyebrow">Zakres pomocy</p>
-          <h2 data-i18n="services.title">W czym pomagamy</h2>
-          <p class="section-sub" data-i18n="services.sub">Kompleksowa pomoc prawna dla cudzoziemców — od dokumentów pobytowych po reprezentację przed urzędami i sądami.</p>
+          <p class="eyebrow" data-i18n="services.eyebrow">Areas of help</p>
+          <h2 data-i18n="services.title">What we help with</h2>
+          <p class="section-sub" data-i18n="services.sub">Comprehensive legal assistance for foreigners — from residence documents to representation before offices and courts.</p>
         </div>
         <div class="grid services-grid">
           <article class="card reveal" style="--d:0">
             <div class="card-icon"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2" stroke="currentColor" stroke-width="1.8"/><circle cx="8.5" cy="11" r="2" stroke="currentColor" stroke-width="1.8"/><path d="M5.5 16.5c.6-1.5 1.7-2.2 3-2.2s2.4.7 3 2.2M14 9.5h5M14 13h5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg></div>
-            <h3 data-i18n="services.s1t">Legalizacja pobytu</h3>
-            <p data-i18n="services.s1d">Zezwolenia na pobyt czasowy i stały, karta pobytu, pobyt rezydenta długoterminowego UE, przedłużanie wiz.</p>
+            <h3 data-i18n="services.s1t">Residence legalization</h3>
+            <p data-i18n="services.s1d">Temporary and permanent residence permits, residence card, EU long-term resident status, visa extensions.</p>
           </article>
           <article class="card reveal" style="--d:1">
             <div class="card-icon"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><rect x="3" y="8" width="18" height="12" rx="2" stroke="currentColor" stroke-width="1.8"/><path d="M9 8V6a2 2 0 0 1 2-2h2a2 2 0 0 1 2 2v2M3 13h18" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg></div>
-            <h3 data-i18n="services.s2t">Praca w Polsce</h3>
-            <p data-i18n="services.s2d">Zezwolenia na pracę, oświadczenia o powierzeniu pracy, zmiana pracodawcy, jednolite zezwolenie na pobyt i pracę.</p>
+            <h3 data-i18n="services.s2t">Work in Poland</h3>
+            <p data-i18n="services.s2d">Work permits, declarations on entrusting work, change of employer, single permit for residence and work.</p>
           </article>
           <article class="card reveal" style="--d:2">
             <div class="card-icon"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="12" cy="9" r="5" stroke="currentColor" stroke-width="1.8"/><path d="m9.5 13.5-1.5 7 4-2.5 4 2.5-1.5-7" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></svg></div>
-            <h3 data-i18n="services.s3t">Obywatelstwo polskie</h3>
-            <p data-i18n="services.s3d">Wnioski o nadanie obywatelstwa, uznanie za obywatela polskiego, Karta Polaka i potwierdzenie posiadania obywatelstwa.</p>
+            <h3 data-i18n="services.s3t">Polish citizenship</h3>
+            <p data-i18n="services.s3d">Applications for granting citizenship, recognition as a Polish citizen, Pole's Card, and citizenship confirmation.</p>
           </article>
           <article class="card reveal" style="--d:3">
             <div class="card-icon"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 4v17M7 6h10M8 6 5 12.5a3.2 3.2 0 0 0 6.4 0L8.5 6M16 6l-3 6.5a3.2 3.2 0 0 0 6.4 0L16.5 6M8 21h8" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
-            <h3 data-i18n="services.s4t">Odwołania od decyzji</h3>
-            <p data-i18n="services.s4d">Odwołania od decyzji wojewody i Urzędu do Spraw Cudzoziemców, skargi do sądów administracyjnych, wznowienie postępowań.</p>
+            <h3 data-i18n="services.s4t">Appeals against decisions</h3>
+            <p data-i18n="services.s4d">Appeals against decisions of the Voivode and the Office for Foreigners, complaints to administrative courts, reopening proceedings.</p>
           </article>
           <article class="card reveal" style="--d:4">
             <div class="card-icon"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="9" cy="8" r="3" stroke="currentColor" stroke-width="1.8"/><circle cx="16.5" cy="9.5" r="2.3" stroke="currentColor" stroke-width="1.8"/><path d="M4 19c.6-3 2.6-4.5 5-4.5s4.4 1.5 5 4.5M14.5 14.9c1.9.2 3.6 1.4 4.2 3.6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg></div>
-            <h3 data-i18n="services.s5t">Prawo rodzinne</h3>
-            <p data-i18n="services.s5d">Małżeństwa z cudzoziemcami, łączenie rodzin, rozwody, alimenty, władza rodzicielska, rejestracja aktów stanu cywilnego.</p>
+            <h3 data-i18n="services.s5t">Family law</h3>
+            <p data-i18n="services.s5d">Marriages with foreigners, family reunification, divorces, alimony, parental authority, civil status registration.</p>
           </article>
           <article class="card reveal" style="--d:5">
             <div class="card-icon"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 3l7 3v5c0 4.5-3 8.5-7 10-4-1.5-7-5.5-7-10V6l7-3z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><path d="m9 12 2 2 4-4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
-            <h3 data-i18n="services.s6t">Prawo pracy</h3>
-            <p data-i18n="services.s6d">Spory z pracodawcą, niewypłacone wynagrodzenia, niezgodne z prawem zwolnienia, wypadki przy pracy.</p>
+            <h3 data-i18n="services.s6t">Labour law</h3>
+            <p data-i18n="services.s6d">Disputes with employers, unpaid wages, unlawful dismissals, workplace accidents.</p>
           </article>
           <article class="card reveal" style="--d:6">
             <div class="card-icon"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4 21V8l8-5 8 5v13M9 21v-6h6v6M4 21h16" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
-            <h3 data-i18n="services.s7t">Firma w Polsce</h3>
-            <p data-i18n="services.s7d">Rejestracja działalności gospodarczej i spółek przez cudzoziemców, umowy, bieżąca obsługa prawna biznesu.</p>
+            <h3 data-i18n="services.s7t">Business in Poland</h3>
+            <p data-i18n="services.s7d">Registration of sole proprietorships and companies by foreigners, contracts, ongoing legal support for business.</p>
           </article>
           <article class="card reveal" style="--d:7">
             <div class="card-icon"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M3 21h18M5 21V10M19 21V10M3 10l9-6 9 6H3zM9 14v4M15 14v4M12 14v4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
-            <h3 data-i18n="services.s8t">Reprezentacja prawna</h3>
-            <p data-i18n="services.s8d">Pełnomocnictwo przed urzędami, sądami i policją, pisma procesowe, pilnowanie terminów, sprawy karne i cywilne.</p>
+            <h3 data-i18n="services.s8t">Legal representation</h3>
+            <p data-i18n="services.s8d">Power of attorney before offices, courts and police, procedural documents, deadline monitoring, criminal and civil cases.</p>
           </article>
         </div>
       </div>
@@ -225,37 +207,37 @@
       <div class="container">
         <div class="split">
           <div class="split-copy reveal">
-            <p class="eyebrow gold" data-i18n="about.eyebrow">Dlaczego my</p>
-            <h2 data-i18n="about.title">Rozumiemy sprawy cudzoziemców — bo to nasza codzienność</h2>
-            <p data-i18n="about.text">Jesteśmy międzynarodowym zespołem prawników z Polski i Ukrainy. Znamy praktykę urzędów wojewódzkich i Urzędu do Spraw Cudzoziemców, dlatego wiemy, jak prowadzić sprawę, żeby uniknąć błędów, przewlekłości i odmów.</p>
+            <p class="eyebrow gold" data-i18n="about.eyebrow">Why us</p>
+            <h2 data-i18n="about.title">We understand foreigners' cases — it's what we do every day</h2>
+            <p data-i18n="about.text">We are an international team of lawyers from Poland and Ukraine. We know the practice of voivodeship offices and the Office for Foreigners, so we know how to run a case to avoid mistakes, delays and refusals.</p>
           </div>
           <ul class="value-list">
             <li class="reveal" style="--d:0">
               <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="1.8"/><path d="M3.5 12h17M12 3.5c2.5 2.3 3.8 5.3 3.8 8.5s-1.3 6.2-3.8 8.5c-2.5-2.3-3.8-5.3-3.8-8.5S9.5 5.8 12 3.5z" stroke="currentColor" stroke-width="1.8"/></svg>
               <div>
-                <h3 data-i18n="about.v1t">W Twoim języku</h3>
-                <p data-i18n="about.v1d">Rozmawiamy i prowadzimy dokumentację po polsku, ukraińsku, angielsku i niemiecku — bez bariery językowej.</p>
+                <h3 data-i18n="about.v1t">In your language</h3>
+                <p data-i18n="about.v1d">We communicate and handle documentation in English, Polish, Ukrainian and German — no language barrier.</p>
               </div>
             </li>
             <li class="reveal" style="--d:1">
               <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 4v17M7 6h10M8 6 5 12.5a3.2 3.2 0 0 0 6.4 0L8.5 6M16 6l-3 6.5a3.2 3.2 0 0 0 6.4 0L16.5 6M8 21h8" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
               <div>
-                <h3 data-i18n="about.v2t">Specjalizacja, nie wszystko-po-trochu</h3>
-                <p data-i18n="about.v2d">Sprawy cudzoziemców to nasz główny obszar — legalizacja, odwołania, obywatelstwo, praca i rodzina.</p>
+                <h3 data-i18n="about.v2t">Specialization, not a bit of everything</h3>
+                <p data-i18n="about.v2d">Foreigners' cases are our core focus — legalization, appeals, citizenship, work and family.</p>
               </div>
             </li>
             <li class="reveal" style="--d:2">
               <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M9 12l2 2 4-5M12 3l7 3v5c0 4.5-3 8.5-7 10-4-1.5-7-5.5-7-10V6l7-3z" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
               <div>
-                <h3 data-i18n="about.v3t">Jasne zasady współpracy</h3>
-                <p data-i18n="about.v3d">Wycenę poznasz przed rozpoczęciem sprawy. Informujemy o każdym kroku postępowania na bieżąco.</p>
+                <h3 data-i18n="about.v3t">Clear terms of cooperation</h3>
+                <p data-i18n="about.v3d">You know the fee before we start. We keep you informed at every step of the proceedings.</p>
               </div>
             </li>
             <li class="reveal" style="--d:3">
               <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><rect x="3" y="5" width="13" height="14" rx="2" stroke="currentColor" stroke-width="1.8"/><path d="M16 10l5-3v10l-5-3" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></svg>
               <div>
-                <h3 data-i18n="about.v4t">Stacjonarnie i online</h3>
-                <p data-i18n="about.v4d">Przyjmujemy w biurze w Łodzi, a klientów z całej Polski i z zagranicy obsługujemy zdalnie.</p>
+                <h3 data-i18n="about.v4t">In person and online</h3>
+                <p data-i18n="about.v4d">We receive clients at our office in Łódź and serve clients from all over Poland and abroad remotely.</p>
               </div>
             </li>
           </ul>
@@ -267,29 +249,29 @@
     <section class="section" id="proces">
       <div class="container">
         <div class="section-head reveal">
-          <p class="eyebrow" data-i18n="process.eyebrow">Jak działamy</p>
-          <h2 data-i18n="process.title">Od pierwszego kontaktu do decyzji</h2>
+          <p class="eyebrow" data-i18n="process.eyebrow">How we work</p>
+          <h2 data-i18n="process.title">From first contact to decision</h2>
         </div>
         <ol class="steps">
           <li class="step reveal" style="--d:0">
             <span class="step-num">01</span>
-            <h3 data-i18n="process.p1t">Kontakt i analiza sprawy</h3>
-            <p data-i18n="process.p1d">Opisujesz nam swoją sytuację telefonicznie, mailowo lub w biurze. Analizujemy dokumenty i oceniamy możliwości.</p>
+            <h3 data-i18n="process.p1t">Contact and case analysis</h3>
+            <p data-i18n="process.p1d">You describe your situation by phone, e-mail or at the office. We analyse the documents and assess your options.</p>
           </li>
           <li class="step reveal" style="--d:1">
             <span class="step-num">02</span>
-            <h3 data-i18n="process.p2t">Plan działania i wycena</h3>
-            <p data-i18n="process.p2d">Otrzymujesz konkretny plan: co robimy, w jakiej kolejności i ile to kosztuje. Bez ukrytych opłat.</p>
+            <h3 data-i18n="process.p2t">Action plan and quote</h3>
+            <p data-i18n="process.p2d">You receive a concrete plan: what we do, in what order, and how much it costs. No hidden fees.</p>
           </li>
           <li class="step reveal" style="--d:2">
             <span class="step-num">03</span>
-            <h3 data-i18n="process.p3t">Dokumenty i reprezentacja</h3>
-            <p data-i18n="process.p3d">Przygotowujemy wnioski i pisma, składamy je w urzędach i reprezentujemy Cię w całym postępowaniu.</p>
+            <h3 data-i18n="process.p3t">Documents and representation</h3>
+            <p data-i18n="process.p3d">We prepare applications and letters, file them with the authorities and represent you throughout the proceedings.</p>
           </li>
           <li class="step reveal" style="--d:3">
             <span class="step-num">04</span>
-            <h3 data-i18n="process.p4t">Wynik i dalsze wsparcie</h3>
-            <p data-i18n="process.p4d">Pilnujemy terminów aż do decyzji. Po zakończeniu sprawy doradzamy, co dalej — np. kolejne kroki do pobytu stałego.</p>
+            <h3 data-i18n="process.p4t">Result and further support</h3>
+            <p data-i18n="process.p4d">We monitor deadlines until the decision. Once the case is closed, we advise on next steps — e.g. the path to permanent residence.</p>
           </li>
         </ol>
       </div>
@@ -298,14 +280,14 @@
     <!-- ===== CTA band ===== -->
     <section class="cta-band">
       <div class="container cta-inner reveal">
-        <h2 data-i18n="cta.title">Masz sprawę urzędową, która nie może czekać?</h2>
-        <p data-i18n="cta.text">Zadzwoń lub napisz — powiemy Ci, jakie masz możliwości i od czego zacząć.</p>
+        <h2 data-i18n="cta.title">Have an official matter that can't wait?</h2>
+        <p data-i18n="cta.text">Call or write to us — we'll tell you what your options are and where to start.</p>
         <div class="hero-actions">
           <a href="tel:+48538369314" class="btn btn-accent btn-lg">
             <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 4h4l2 5-2.5 1.5a12 12 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2z" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
             <span>+48 538 369 314</span>
           </a>
-          <a href="mailto:twojprawnik.lodz@gmail.com" class="btn btn-ghost btn-lg" data-i18n="cta.mail">Napisz e-mail</a>
+          <a href="mailto:twojprawnik.lodz@gmail.com" class="btn btn-ghost btn-lg" data-i18n="cta.mail">Send an e-mail</a>
         </div>
       </div>
     </section>
@@ -314,29 +296,29 @@
     <section class="section" id="faq">
       <div class="container container-narrow">
         <div class="section-head reveal">
-          <p class="eyebrow" data-i18n="faq.eyebrow">Częste pytania</p>
-          <h2 data-i18n="faq.title">Pytania i odpowiedzi</h2>
+          <p class="eyebrow" data-i18n="faq.eyebrow">Frequently asked</p>
+          <h2 data-i18n="faq.title">Questions and answers</h2>
         </div>
         <div class="faq-list">
           <details class="faq-item reveal" style="--d:0">
-            <summary><span data-i18n="faq.q1">Czy obsługujecie klientów spoza Łodzi?</span><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="m6 9 6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></summary>
-            <div class="faq-body"><p data-i18n="faq.a1">Tak. Sprawy urzędowe prowadzimy w całej Polsce, a konsultacje odbywają się także online i telefonicznie. Dokumenty można przekazać elektronicznie lub pocztą.</p></div>
+            <summary><span data-i18n="faq.q1">Do you serve clients outside Łódź?</span><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="m6 9 6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></summary>
+            <div class="faq-body"><p data-i18n="faq.a1">Yes. We handle administrative cases throughout Poland, and consultations are also available online and by phone. Documents can be sent electronically or by post.</p></div>
           </details>
           <details class="faq-item reveal" style="--d:1">
-            <summary><span data-i18n="faq.q2">W jakich językach mogę załatwić sprawę?</span><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="m6 9 6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></summary>
-            <div class="faq-body"><p data-i18n="faq.a2">Obsługujemy klientów po polsku, ukraińsku, angielsku i niemiecku. Całą komunikację z urzędami prowadzimy za Ciebie w języku polskim.</p></div>
+            <summary><span data-i18n="faq.q2">In which languages can I handle my case?</span><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="m6 9 6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></summary>
+            <div class="faq-body"><p data-i18n="faq.a2">We serve clients in English, Polish, Ukrainian and German. We handle all communication with the authorities on your behalf in Polish.</p></div>
           </details>
           <details class="faq-item reveal" style="--d:2">
-            <summary><span data-i18n="faq.q3">Ile kosztuje pomoc prawna?</span><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="m6 9 6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></summary>
-            <div class="faq-body"><p data-i18n="faq.a3">Koszt zależy od rodzaju i złożoności sprawy. Po pierwszej rozmowie i analizie dokumentów przedstawiamy konkretną wycenę — zanim podejmiesz decyzję o współpracy.</p></div>
+            <summary><span data-i18n="faq.q3">How much does legal help cost?</span><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="m6 9 6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></summary>
+            <div class="faq-body"><p data-i18n="faq.a3">The cost depends on the type and complexity of the case. After the first conversation and document review, we present a specific quote — before you decide to work with us.</p></div>
           </details>
           <details class="faq-item reveal" style="--d:3">
-            <summary><span data-i18n="faq.q4">Jak długo trwa uzyskanie karty pobytu?</span><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="m6 9 6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></summary>
-            <div class="faq-body"><p data-i18n="faq.a4">Czas zależy od urzędu wojewódzkiego i kompletności wniosku — zwykle od kilku miesięcy do ponad roku. Dobrze przygotowany wniosek i aktywne pilnowanie sprawy znacząco skracają postępowanie.</p></div>
+            <summary><span data-i18n="faq.q4">How long does it take to get a residence card?</span><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="m6 9 6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></summary>
+            <div class="faq-body"><p data-i18n="faq.a4">It depends on the voivodeship office and the completeness of the application — usually from a few months to over a year. A well-prepared application and active case monitoring significantly shorten the process.</p></div>
           </details>
           <details class="faq-item reveal" style="--d:4">
-            <summary><span data-i18n="faq.q5">Co przygotować na pierwszą konsultację?</span><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="m6 9 6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></summary>
-            <div class="faq-body"><p data-i18n="faq.a5">Paszport, dotychczasowe dokumenty pobytowe, korespondencję z urzędem (decyzje, wezwania) oraz dokumenty dotyczące pracy lub rodziny. Jeśli czegoś brakuje — pomożemy to skompletować.</p></div>
+            <summary><span data-i18n="faq.q5">What should I prepare for the first consultation?</span><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="m6 9 6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></summary>
+            <div class="faq-body"><p data-i18n="faq.a5">Your passport, current residence documents, correspondence with the office (decisions, summonses) and documents concerning work or family. If anything is missing — we'll help you complete it.</p></div>
           </details>
         </div>
       </div>
@@ -346,19 +328,19 @@
     <section class="section section-contact" id="kontakt">
       <div class="container">
         <div class="section-head reveal">
-          <p class="eyebrow" data-i18n="contact.eyebrow">Kontakt</p>
-          <h2 data-i18n="contact.title">Skontaktuj się z nami</h2>
+          <p class="eyebrow" data-i18n="contact.eyebrow">Contact</p>
+          <h2 data-i18n="contact.title">Get in touch</h2>
         </div>
         <div class="contact-grid">
           <div class="contact-info reveal">
             <ul class="contact-list">
               <li>
                 <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 21s-7-4.6-7-10a7 7 0 0 1 14 0c0 5.4-7 10-7 10z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><circle cx="12" cy="11" r="2.5" stroke="currentColor" stroke-width="1.8"/></svg>
-                <div><strong data-i18n="contact.addrLabel">Adres biura</strong><span>ul. Gdańska 145/11<br>90-536 Łódź</span></div>
+                <div><strong data-i18n="contact.addrLabel">Office address</strong><span>ul. Gdańska 145/11<br>90-536 Łódź</span></div>
               </li>
               <li>
                 <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 4h4l2 5-2.5 1.5a12 12 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2z" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
-                <div><strong data-i18n="contact.phoneLabel">Telefon</strong><a href="tel:+48538369314">+48 538 369 314</a></div>
+                <div><strong data-i18n="contact.phoneLabel">Phone</strong><a href="tel:+48538369314">+48 538 369 314</a></div>
               </li>
               <li>
                 <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2" stroke="currentColor" stroke-width="1.8"/><path d="m3.5 7 8.5 6 8.5-6" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></svg>
@@ -366,7 +348,7 @@
               </li>
               <li>
                 <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="1.8"/><path d="M12 7v5l3.5 2" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
-                <div><strong data-i18n="contact.hoursLabel">Przyjęcia</strong><span data-i18n="contact.hours">Wizyty po wcześniejszym umówieniu telefonicznym</span></div>
+                <div><strong data-i18n="contact.hoursLabel">Appointments</strong><span data-i18n="contact.hours">Visits by prior phone appointment</span></div>
               </li>
             </ul>
             <div class="socials">
@@ -381,19 +363,19 @@
 
           <form class="contact-form reveal" id="contactForm" novalidate>
             <div class="form-row">
-              <label for="fName" data-i18n="form.name">Imię i nazwisko</label>
+              <label for="fName" data-i18n="form.name">Full name</label>
               <input type="text" id="fName" name="name" autocomplete="name" required>
             </div>
             <div class="form-row">
-              <label for="fPhone" data-i18n="form.phone">Telefon lub e-mail</label>
+              <label for="fPhone" data-i18n="form.phone">Phone or e-mail</label>
               <input type="text" id="fPhone" name="contact" autocomplete="tel" required>
             </div>
             <div class="form-row">
-              <label for="fMsg" data-i18n="form.msg">Opisz krótko swoją sprawę</label>
+              <label for="fMsg" data-i18n="form.msg">Briefly describe your case</label>
               <textarea id="fMsg" name="message" rows="5" required></textarea>
             </div>
-            <p class="form-hint" data-i18n="form.hint">Wysłanie formularza otworzy Twój program pocztowy z gotową wiadomością.</p>
-            <button type="submit" class="btn btn-accent btn-lg" data-i18n="form.send">Wyślij wiadomość</button>
+            <p class="form-hint" data-i18n="form.hint">Submitting the form will open your e-mail app with a ready message.</p>
+            <button type="submit" class="btn btn-accent btn-lg" data-i18n="form.send">Send message</button>
             <p class="form-status" id="formStatus" role="alert" aria-live="polite"></p>
           </form>
         </div>
@@ -411,22 +393,22 @@
       <div class="footer-top">
         <div class="footer-brand">
           <strong>TWÓJ PRAWNIK</strong>
-          <p data-i18n="footer.name">Międzynarodowe Biuro Pomocy Prawnej do spraw Cudzoziemców w Polsce</p>
+          <p data-i18n="footer.name">International Legal Aid Office for Foreigners in Poland</p>
           <p>ul. Gdańska 145/11, 90-536 Łódź</p>
         </div>
         <div class="footer-award">
           <img src="assets/orly-prawa-2025.webp" alt="Orły Prawa — Laureat konkursu 2025" width="85" height="96" loading="lazy">
-          <p data-i18n="footer.award">Laureat konkursu Orły Prawa 2025</p>
+          <p data-i18n="footer.award">Winner of the Orły Prawa 2025 award</p>
         </div>
       </div>
       <nav class="footer-nav" aria-label="Stopka">
-        <a href="#uslugi" data-i18n="nav.services">Usługi</a>
-        <a href="#o-nas" data-i18n="nav.about">O nas</a>
-        <a href="#proces" data-i18n="nav.process">Jak działamy</a>
+        <a href="#uslugi" data-i18n="nav.services">Services</a>
+        <a href="#o-nas" data-i18n="nav.about">About us</a>
+        <a href="#proces" data-i18n="nav.process">How we work</a>
         <a href="#faq" data-i18n="nav.faq">FAQ</a>
-        <a href="#kontakt" data-i18n="nav.contact">Kontakt</a>
+        <a href="#kontakt" data-i18n="nav.contact">Contact</a>
       </nav>
-      <p class="footer-note">© <span id="year">2026</span> TWÓJ PRAWNIK. <span data-i18n="footer.rights">Wszelkie prawa zastrzeżone.</span></p>
+      <p class="footer-note">© <span id="year">2026</span> TWÓJ PRAWNIK. <span data-i18n="footer.rights">All rights reserved.</span></p>
     </div>
   </footer>
 
@@ -434,11 +416,11 @@
   <div class="mobile-cta" role="navigation" aria-label="Szybki kontakt">
     <a href="tel:+48538369314" class="mobile-cta-call">
       <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 4h4l2 5-2.5 1.5a12 12 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2z" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
-      <span data-i18n="bar.call">Zadzwoń</span>
+      <span data-i18n="bar.call">Call us</span>
     </a>
     <a href="#kontakt" class="mobile-cta-write">
       <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2" stroke="currentColor" stroke-width="1.8"/><path d="m3.5 7 8.5 6 8.5-6" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></svg>
-      <span data-i18n="bar.write">Napisz</span>
+      <span data-i18n="bar.write">Write</span>
     </a>
   </div>
 

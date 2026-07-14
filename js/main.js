@@ -1,68 +1,35 @@
 /* ============================================================
    TWÓJ PRAWNIK — logika strony
-   1. i18n: auto-detekcja języka przeglądarki + przełącznik
-   2. Header: stan po przewinięciu, menu mobilne
+   Wersje językowe to osobne statyczne podstrony (/, /ua/, /en/, /de/)
+   generowane przez build.py — ten plik nie podmienia treści.
+   1. Język: zapamiętanie wyboru + dropdown
+   2. Header: stan po przewinięciu, menu mobilne, parallax hero
    3. Animacje: scroll reveal (IntersectionObserver)
-   4. Formularz kontaktowy (mailto)
+   4. Formularz: fetch do backendu (FORM_ENDPOINT) lub mailto
    ============================================================ */
 
 (function () {
   "use strict";
 
-  var SUPPORTED = ["pl", "uk", "en", "de"];
-  var STORAGE_KEY = "tp-lang";
-  var LANG_LABEL = { pl: "PL", uk: "UA", en: "EN", de: "DE" };
+  /* Adres backendu formularza (np. https://formspree.io/f/XXXXXXX).
+     Pusty = formularz otwiera program pocztowy (mailto). */
+  var FORM_ENDPOINT = "";
 
-  /* ---------- 1. i18n ---------- */
+  var PAGE_LANG = (document.documentElement.lang || "pl").slice(0, 2);
 
-  function detectLang() {
-    var saved = null;
-    try { saved = localStorage.getItem(STORAGE_KEY); } catch (e) { /* tryb prywatny */ }
-    if (saved && SUPPORTED.indexOf(saved) !== -1) return saved;
+  var MSG = {
+    pl: { err: "Uzupełnij wszystkie pola formularza.", sending: "Wysyłanie…", sent: "Dziękujemy! Wiadomość została wysłana — odpowiemy wkrótce.", fail: "Nie udało się wysłać wiadomości. Zadzwoń: +48 538 369 314.", mailto: "Otwieramy Twój program pocztowy…" },
+    uk: { err: "Заповни всі поля форми.", sending: "Надсилання…", sent: "Дякуємо! Повідомлення надіслано — незабаром відповімо.", fail: "Не вдалося надіслати. Зателефонуй: +48 538 369 314.", mailto: "Відкриваємо твою поштову програму…" },
+    en: { err: "Please fill in all form fields.", sending: "Sending…", sent: "Thank you! Your message has been sent — we'll reply soon.", fail: "Sending failed. Call us: +48 538 369 314.", mailto: "Opening your e-mail app…" },
+    de: { err: "Bitte füllen Sie alle Felder aus.", sending: "Wird gesendet…", sent: "Vielen Dank! Ihre Nachricht wurde gesendet — wir melden uns bald.", fail: "Senden fehlgeschlagen. Rufen Sie an: +48 538 369 314.", mailto: "Ihr E-Mail-Programm wird geöffnet…" }
+  };
+  var msg = MSG[PAGE_LANG] || MSG.pl;
 
-    var candidates = navigator.languages || [navigator.language || "pl"];
-    for (var i = 0; i < candidates.length; i++) {
-      var code = String(candidates[i]).toLowerCase().slice(0, 2);
-      if (code === "ua") code = "uk";
-      if (code === "ru") code = "uk"; // rosyjskojęzyczni → wersja ukraińska
-      if (SUPPORTED.indexOf(code) !== -1) return code;
-    }
-    return "pl";
-  }
+  /* ---------- 1. Język ---------- */
 
-  function applyLang(lang) {
-    var dict = I18N[lang];
-    if (!dict) return;
+  /* zapamiętaj język bieżącej podstrony (dla auto-przekierowania na "/") */
+  try { localStorage.setItem("tp-lang", PAGE_LANG); } catch (e) { /* tryb prywatny */ }
 
-    document.querySelectorAll("[data-i18n]").forEach(function (el) {
-      var key = el.getAttribute("data-i18n");
-      if (dict[key] != null) el.textContent = dict[key];
-    });
-
-    document.querySelectorAll("[data-i18n-html]").forEach(function (el) {
-      var key = el.getAttribute("data-i18n-html");
-      if (dict[key] != null) el.innerHTML = dict[key];
-    });
-
-    document.documentElement.lang = lang;
-    document.title = dict["meta.title"] || document.title;
-    var metaDesc = document.querySelector('meta[name="description"]');
-    if (metaDesc && dict["meta.desc"]) metaDesc.setAttribute("content", dict["meta.desc"]);
-
-    var current = document.getElementById("langCurrent");
-    if (current) current.textContent = LANG_LABEL[lang];
-
-    document.querySelectorAll(".lang-menu [data-lang]").forEach(function (btn) {
-      btn.setAttribute("aria-selected", btn.getAttribute("data-lang") === lang ? "true" : "false");
-    });
-
-    try { localStorage.setItem(STORAGE_KEY, lang); } catch (e) { /* ignoruj */ }
-  }
-
-  var currentLang = detectLang();
-  applyLang(currentLang);
-
-  /* Przełącznik języka */
   var langSwitch = document.getElementById("langSwitch");
   var langBtn = document.getElementById("langBtn");
   var langMenu = document.getElementById("langMenu");
@@ -78,12 +45,11 @@
     langBtn.setAttribute("aria-expanded", open ? "true" : "false");
   });
 
+  /* przed nawigacją zapisz wybrany język, żeby "/" nie przekierowało z powrotem */
   langMenu.addEventListener("click", function (e) {
-    var btn = e.target.closest("[data-lang]");
-    if (!btn) return;
-    currentLang = btn.getAttribute("data-lang");
-    applyLang(currentLang);
-    closeLangMenu();
+    var link = e.target.closest("[data-lang]");
+    if (!link) return;
+    try { localStorage.setItem("tp-lang", link.getAttribute("data-lang")); } catch (err) { /* ignoruj */ }
   });
 
   document.addEventListener("click", function (e) {
@@ -109,11 +75,11 @@
   window.addEventListener("scroll", onScroll, { passive: true });
   onScroll();
 
-  /* Delikatny parallax tła hero (tylko bez preferencji ograniczonego ruchu) */
-  var heroBg = document.querySelector(".hero-bg");
-  var prefersReduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  var reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
-  if (heroBg && !prefersReduce) {
+  /* Delikatny parallax tła hero */
+  var heroBg = document.querySelector(".hero-bg");
+  if (heroBg && !reduceMotion) {
     var ticking = false;
     window.addEventListener("scroll", function () {
       if (ticking) return;
@@ -146,7 +112,6 @@
 
   /* ---------- 3. Scroll reveal ---------- */
 
-  var reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
   var revealEls = document.querySelectorAll(".reveal");
 
   if (reduceMotion || !("IntersectionObserver" in window)) {
@@ -164,14 +129,19 @@
     revealEls.forEach(function (el) { io.observe(el); });
   }
 
-  /* ---------- 4. Formularz (mailto) ---------- */
+  /* ---------- 4. Formularz ---------- */
 
   var form = document.getElementById("contactForm");
   var status = document.getElementById("formStatus");
+  var submitBtn = form.querySelector('button[type="submit"]');
+
+  function setStatus(text, cls) {
+    status.textContent = text;
+    status.className = "form-status" + (cls ? " " + cls : "");
+  }
 
   form.addEventListener("submit", function (e) {
     e.preventDefault();
-    var dict = I18N[currentLang];
 
     var name = form.elements.name.value.trim();
     var contact = form.elements.contact.value.trim();
@@ -185,20 +155,35 @@
     });
 
     if (!valid) {
-      status.textContent = dict["form.err"];
-      status.className = "form-status error";
+      setStatus(msg.err, "error");
       var firstInvalid = form.querySelector(".invalid");
       if (firstInvalid) firstInvalid.focus();
       return;
     }
 
-    status.textContent = dict["form.ok"];
-    status.className = "form-status ok";
+    if (FORM_ENDPOINT) {
+      submitBtn.disabled = true;
+      setStatus(msg.sending, "");
+      fetch(FORM_ENDPOINT, {
+        method: "POST",
+        headers: { "Content-Type": "application/json", "Accept": "application/json" },
+        body: JSON.stringify({ name: name, contact: contact, message: message, lang: PAGE_LANG })
+      }).then(function (res) {
+        if (!res.ok) throw new Error(String(res.status));
+        setStatus(msg.sent, "ok");
+        form.reset();
+      }).catch(function () {
+        setStatus(msg.fail, "error");
+      }).finally(function () {
+        submitBtn.disabled = false;
+      });
+      return;
+    }
 
+    /* fallback: mailto */
+    setStatus(msg.mailto, "ok");
     var subject = encodeURIComponent("Zapytanie ze strony — " + name);
-    var body = encodeURIComponent(
-      message + "\n\n---\n" + name + "\n" + contact
-    );
+    var body = encodeURIComponent(message + "\n\n---\n" + name + "\n" + contact);
     window.location.href = "mailto:twojprawnik.lodz@gmail.com?subject=" + subject + "&body=" + body;
   });
 

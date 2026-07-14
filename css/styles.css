@@ -313,23 +313,22 @@ button { font: inherit; cursor: pointer; }
   pointer-events: auto;
 }
 
-.lang-menu button {
+.lang-menu a {
   display: flex;
   align-items: center;
   gap: 0.7rem;
   width: 100%;
   min-height: 44px;
   padding: 0.5rem 0.8rem;
-  border: 0;
-  background: none;
   border-radius: 7px;
   font-size: 0.92rem;
   color: var(--c-text);
   text-align: left;
+  text-decoration: none;
   transition: background-color 150ms var(--ease-out);
 }
-.lang-menu button:hover { background: var(--c-muted); }
-.lang-menu button[aria-selected="true"] { background: var(--c-muted); font-weight: 600; }
+.lang-menu a:hover { background: var(--c-muted); text-decoration: none; }
+.lang-menu a[aria-selected="true"] { background: var(--c-muted); font-weight: 600; }
 
 .lang-code {
   font-size: 0.7rem;
@@ -408,6 +407,65 @@ button { font: inherit; cursor: pointer; }
 .hero-inner { position: relative; }
 
 .hero-copy { max-width: 46rem; }
+
+/* --- Waga sprawiedliwości (autorska grafika hero, desktop) --- */
+.hero-art { display: none; }
+
+@media (min-width: 1024px) {
+  .hero-inner {
+    display: grid;
+    grid-template-columns: minmax(0, 7fr) minmax(0, 5fr);
+    gap: var(--space-5);
+    align-items: center;
+  }
+
+  .hero-art {
+    display: block;
+    opacity: 0;
+    animation: artIn 900ms var(--ease-out) 200ms forwards;
+  }
+
+  .hero-art svg {
+    width: 100%;
+    max-width: 420px;
+    margin-inline: auto;
+    filter: drop-shadow(0 12px 40px rgba(0, 0, 0, 0.35));
+  }
+}
+
+@keyframes artIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.art-globe {
+  opacity: 0;
+  animation: globeIn 1200ms ease 400ms forwards;
+}
+
+@keyframes globeIn { to { opacity: 1; } }
+
+/* rysowanie linii wagi: pathLength=1 -> dasharray/dashoffset w [0,1] */
+.draw {
+  stroke-dasharray: 1;
+  stroke-dashoffset: 1;
+  animation: drawIn 1100ms var(--ease-out) forwards;
+  animation-delay: calc(300ms + var(--dd, 0s));
+}
+
+@keyframes drawIn { to { stroke-dashoffset: 0; } }
+
+/* delikatne kołysanie belki po narysowaniu */
+.art-beam {
+  transform-origin: 210px 122px;
+  transform-box: view-box;
+  animation: beamSway 9s ease-in-out 2.2s infinite alternate;
+}
+
+@keyframes beamSway {
+  from { transform: rotate(-1.4deg); }
+  to   { transform: rotate(1.4deg); }
+}
 
 .hero .eyebrow { color: var(--c-gold); }
 
@@ -919,4 +977,8 @@ button { font: inherit; cursor: pointer; }
 
   .rise, .reveal { opacity: 1; transform: none; }
   .orb { animation: none; }
+  .hero-art { opacity: 1; }
+  .draw { stroke-dashoffset: 0; animation: none; }
+  .art-globe { opacity: 1; animation: none; }
+  .art-beam { animation: none; }
 }
