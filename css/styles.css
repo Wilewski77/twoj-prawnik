@@ -22,7 +22,7 @@
   --c-gold-soft: #e7d9a8;
 
   --font-head: "EB Garamond", Georgia, serif;
-  --font-body: "Inter", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --font-body: "IBM Plex Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
 
   --space-1: 0.5rem;
   --space-2: 1rem;
@@ -109,6 +109,24 @@ button { font: inherit; cursor: pointer; }
   max-width: 42rem;
   margin-bottom: var(--space-5);
 }
+
+/* Złota linia rysująca się pod nagłówkiem sekcji po jej ujawnieniu */
+.section-head h2::after,
+.split-copy h2::after {
+  content: "";
+  display: block;
+  width: 64px;
+  height: 3px;
+  margin-top: 0.9rem;
+  border-radius: 2px;
+  background: linear-gradient(90deg, var(--c-gold), rgba(201, 162, 39, 0.15));
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 700ms var(--ease-out) 300ms;
+}
+
+.section-head.in-view h2::after,
+.split-copy.in-view h2::after { transform: scaleX(1); }
 
 .section-sub {
   margin-top: var(--space-2);
@@ -477,7 +495,7 @@ button { font: inherit; cursor: pointer; }
 
 /* keep reveal + hover transforms from fighting */
 .card.reveal { transition: transform var(--dur) var(--ease-out), box-shadow var(--dur) var(--ease-out), border-color var(--dur) var(--ease-out), opacity 650ms var(--ease-out); }
-.card.reveal:not(.in-view) { transform: translateY(26px); transition: opacity 650ms var(--ease-out), transform 650ms var(--ease-out); transition-delay: calc(var(--d, 0) * 90ms); }
+.card.reveal:not(.in-view) { transform: translateY(26px) scale(0.97); transition: opacity 650ms var(--ease-out), transform 650ms var(--ease-out); transition-delay: calc(var(--d, 0) * 90ms); }
 
 .card-icon {
   width: 52px;
@@ -738,6 +756,33 @@ button { font: inherit; cursor: pointer; }
 
 .footer-inner { display: grid; gap: var(--space-3); }
 
+.footer-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: var(--space-4);
+  flex-wrap: wrap;
+}
+
+.footer-award {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  padding: 0.9rem 1.1rem;
+  border: 1px solid rgba(201, 162, 39, 0.35);
+  border-radius: var(--radius-sm);
+  background: rgba(201, 162, 39, 0.07);
+}
+
+.footer-award img { height: 88px; width: auto; border-radius: 6px; }
+
+.footer-award p {
+  max-width: 11rem;
+  font-size: 0.85rem;
+  line-height: 1.45;
+  color: var(--c-gold-soft);
+}
+
 .footer-brand strong {
   font-family: var(--font-head);
   font-size: 1.15rem;
@@ -751,6 +796,39 @@ button { font: inherit; cursor: pointer; }
 .footer-nav a:hover { color: var(--c-gold-soft); }
 
 .footer-note { padding-top: var(--space-3); border-top: 1px solid rgba(255, 255, 255, 0.12); font-size: 0.82rem; }
+
+/* ---------- Mobilna belka kontaktu ---------- */
+.mobile-cta {
+  display: none;
+  position: fixed;
+  left: 0; right: 0; bottom: 0;
+  z-index: 90;
+  grid-template-columns: 1fr 1fr;
+  background: var(--c-navy-950);
+  border-top: 1px solid rgba(201, 162, 39, 0.35);
+  padding-bottom: env(safe-area-inset-bottom, 0);
+  box-shadow: 0 -8px 24px -12px rgba(0, 0, 0, 0.45);
+}
+
+.mobile-cta a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.55rem;
+  min-height: 56px;
+  font-weight: 600;
+  font-size: 0.98rem;
+  color: #fff;
+  text-decoration: none;
+  transition: background-color var(--dur) var(--ease-out);
+}
+
+.mobile-cta svg { width: 20px; height: 20px; flex: none; }
+
+.mobile-cta-call { background: var(--c-accent); }
+.mobile-cta-call:active { background: var(--c-accent-hover); }
+.mobile-cta-write { background: rgba(255, 255, 255, 0.06); color: var(--c-gold-soft); }
+.mobile-cta-write:active { background: rgba(255, 255, 255, 0.12); }
 
 /* ============================================================
    Responsive
@@ -807,6 +885,12 @@ button { font: inherit; cursor: pointer; }
   :root { --header-h: 64px; }
 
   .section { padding-block: var(--space-6); }
+
+  /* belka kontaktu tylko na telefonach + miejsce nad nią */
+  .mobile-cta { display: grid; }
+  body { padding-bottom: calc(56px + env(safe-area-inset-bottom, 0px)); }
+
+  .footer-top { flex-direction: column; }
 
   .brand-mark { width: 34px; height: 34px; }
   .brand-text strong { font-size: 0.98rem; }

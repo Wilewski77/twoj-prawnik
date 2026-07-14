@@ -8,10 +8,11 @@
   <meta property="og:title" content="TWÓJ PRAWNIK — Pomoc prawna dla cudzoziemców w Polsce">
   <meta property="og:description" content="Legalizacja pobytu i pracy, obywatelstwo, odwołania. Doradzamy w 4 językach. Łódź · online w całej Polsce.">
   <meta property="og:type" content="website">
+  <meta property="og:image" content="assets/og-image.png">
   <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:wght@500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:wght@500;600;700&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/styles.css">
   <script type="application/ld+json">
   {
@@ -358,10 +359,16 @@
   <!-- ===== Footer ===== -->
   <footer class="site-footer">
     <div class="container footer-inner">
-      <div class="footer-brand">
-        <strong>TWÓJ PRAWNIK</strong>
-        <p data-i18n="footer.name">Międzynarodowe Biuro Pomocy Prawnej do spraw Cudzoziemców w Polsce</p>
-        <p>ul. Gdańska 145/11, 90-536 Łódź</p>
+      <div class="footer-top">
+        <div class="footer-brand">
+          <strong>TWÓJ PRAWNIK</strong>
+          <p data-i18n="footer.name">Międzynarodowe Biuro Pomocy Prawnej do spraw Cudzoziemców w Polsce</p>
+          <p>ul. Gdańska 145/11, 90-536 Łódź</p>
+        </div>
+        <div class="footer-award">
+          <img src="assets/orly-prawa-2025.webp" alt="Orły Prawa — Laureat konkursu 2025" width="85" height="96" loading="lazy">
+          <p data-i18n="footer.award">Laureat konkursu Orły Prawa 2025</p>
+        </div>
       </div>
       <nav class="footer-nav" aria-label="Stopka">
         <a href="#uslugi" data-i18n="nav.services">Usługi</a>
@@ -373,6 +380,18 @@
       <p class="footer-note">© <span id="year">2026</span> TWÓJ PRAWNIK. <span data-i18n="footer.rights">Wszelkie prawa zastrzeżone.</span></p>
     </div>
   </footer>
+
+  <!-- Stała belka kontaktu na urządzeniach mobilnych -->
+  <div class="mobile-cta" role="navigation" aria-label="Szybki kontakt">
+    <a href="tel:+48538369314" class="mobile-cta-call">
+      <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 4h4l2 5-2.5 1.5a12 12 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2z" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      <span data-i18n="bar.call">Zadzwoń</span>
+    </a>
+    <a href="#kontakt" class="mobile-cta-write">
+      <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2" stroke="currentColor" stroke-width="1.8"/><path d="m3.5 7 8.5 6 8.5-6" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></svg>
+      <span data-i18n="bar.write">Napisz</span>
+    </a>
+  </div>
 
   <script src="js/i18n.js"></script>
   <script src="js/main.js"></script>

@@ -102,7 +102,11 @@ const I18N = {
     "form.ok": "Otwieramy Twój program pocztowy…",
 
     "footer.name": "Międzynarodowe Biuro Pomocy Prawnej do spraw Cudzoziemców w Polsce",
-    "footer.rights": "Wszelkie prawa zastrzeżone."
+    "footer.award": "Laureat konkursu Orły Prawa 2025",
+    "footer.rights": "Wszelkie prawa zastrzeżone.",
+
+    "bar.call": "Zadzwoń",
+    "bar.write": "Napisz"
   },
 
   /* ---------------- УКРАЇНСЬКА ---------------- */
@@ -203,7 +207,11 @@ const I18N = {
     "form.ok": "Відкриваємо твою поштову програму…",
 
     "footer.name": "Міжнародне бюро правової допомоги іноземцям у Польщі",
-    "footer.rights": "Усі права захищені."
+    "footer.award": "Лауреат конкурсу Orły Prawa 2025",
+    "footer.rights": "Усі права захищені.",
+
+    "bar.call": "Зателефонуй",
+    "bar.write": "Напиши"
   },
 
   /* ---------------- ENGLISH ---------------- */
@@ -304,7 +312,11 @@ const I18N = {
     "form.ok": "Opening your e-mail app…",
 
     "footer.name": "International Legal Aid Office for Foreigners in Poland",
-    "footer.rights": "All rights reserved."
+    "footer.award": "Winner of the Orły Prawa 2025 award",
+    "footer.rights": "All rights reserved.",
+
+    "bar.call": "Call us",
+    "bar.write": "Write"
   },
 
   /* ---------------- DEUTSCH ---------------- */
@@ -405,6 +417,10 @@ const I18N = {
     "form.ok": "Ihr E-Mail-Programm wird geöffnet…",
 
     "footer.name": "Internationales Büro für Rechtshilfe für Ausländer in Polen",
-    "footer.rights": "Alle Rechte vorbehalten."
+    "footer.award": "Preisträger des Wettbewerbs Orły Prawa 2025",
+    "footer.rights": "Alle Rechte vorbehalten.",
+
+    "bar.call": "Anrufen",
+    "bar.write": "Schreiben"
   }
 };

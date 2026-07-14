@@ -109,6 +109,25 @@
   window.addEventListener("scroll", onScroll, { passive: true });
   onScroll();
 
+  /* Delikatny parallax tła hero (tylko bez preferencji ograniczonego ruchu) */
+  var heroBg = document.querySelector(".hero-bg");
+  var prefersReduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+  if (heroBg && !prefersReduce) {
+    var ticking = false;
+    window.addEventListener("scroll", function () {
+      if (ticking) return;
+      ticking = true;
+      requestAnimationFrame(function () {
+        var y = window.scrollY;
+        if (y < window.innerHeight * 1.2) {
+          heroBg.style.transform = "translate3d(0," + (y * 0.18).toFixed(1) + "px,0)";
+        }
+        ticking = false;
+      });
+    }, { passive: true });
+  }
+
   /* Menu mobilne */
   var menuToggle = document.getElementById("menuToggle");
   var mainNav = document.getElementById("mainNav");
